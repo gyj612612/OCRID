@@ -1,0 +1,5 @@
+{
+  "name": "BizCard AI - Batch Scanner",
+  "description": "A high-performance batch business card scanner that uses Gemini AI to extract contact details and export them to Excel.",
+  "requestFramePermissions": []
+}
