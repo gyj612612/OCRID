@@ -4,7 +4,8 @@ import { ExtractedData } from "../types";
 // Initialize Gemini client
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
-const MODEL_NAME = "gemini-2.5-flash";
+// Upgrading to Pro model for better capability in distinguishing multiple dense objects
+const MODEL_NAME = "gemini-3-pro-preview";
 
 /**
  * Converts a File object to a Base64 string.
@@ -42,7 +43,16 @@ export const extractBusinessCardInfo = async (file: File): Promise<ExtractedData
             },
           },
           {
-            text: "Analyze this image. It may contain ONE or MULTIPLE business cards. Extract the contact information for EACH distinct business card found into a JSON list. If a field is not visible, use null.",
+            text: `You are an expert OCR and Data Extraction AI. 
+            
+            This image contains MULTIPLE business cards (possibly 8 or more). 
+            Your task is to identifying EVERY SINGLE card visible in the image.
+            
+            Scan the image thoroughly (row by row, or grid by grid) to ensure no card is missed.
+            For each card found, extract the contact information into the specified JSON object.
+            
+            Return a JSON List containing one object per card found.
+            If a field is not visible on a specific card, use null.`,
           },
         ],
       },
