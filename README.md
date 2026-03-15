@@ -1,20 +1,50 @@
-<div align="center">
+# OCRID
 
-</div>
+`OCRID` is a browser-based business card extraction tool built with React, TypeScript, and Gemini-powered OCR.
 
-# Run
+It is designed for fast batch processing of business card images and exports structured contact data to Excel.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app: https://ai.studio/apps/drive/1VehNh_tfXfaA5KlWruYFx-2cgCi7S1Dt
+- drag-and-drop batch upload
+- AI-assisted extraction of contact fields from card images
+- support for multiple cards detected in a single image
+- structured review in the browser
+- Excel export for processed contacts
+
+## Tech Stack
+
+- React
+- TypeScript
+- Vite
+- `@google/genai`
+- `xlsx`
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
+Prerequisite: Node.js
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+
+```bash
+npm install
+```
+
+2. Set your API key in `.env.local`
+
+Example:
+
+```bash
+API_KEY=your_api_key_here
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+## Notes
+
+- The app uses Gemini-based extraction through `services/geminiService.ts`.
+- Exported results are generated as `.xlsx` files in the browser.
